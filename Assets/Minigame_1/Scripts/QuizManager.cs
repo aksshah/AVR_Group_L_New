@@ -76,7 +76,7 @@ public class QuizManager : MonoBehaviour
             if (questionsData[currentQuestionIndex].optionImages[i] != null)
             {
                 optionButtons[i].image.sprite = questionsData[currentQuestionIndex].optionImages[i];
-                optionButtons[i].image.SetNativeSize(); // Adjust image size if needed
+                //optionButtons[i].image.SetNativeSize(); // Adjust image size if needed
                 Debug.Log($"Assigned Image {questionsData[currentQuestionIndex].optionImages[i].name} to Button {i + 1}");
             }
             else
