@@ -687,7 +687,7 @@ RectTransform:
   m_Children:
   - {fileID: 1934025195}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -18.827}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
@@ -3043,7 +3043,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 80.341484, y: -46.48172}
+  m_AnchoredPosition: {x: 80.341484, y: -79.9}
   m_SizeDelta: {x: 127.1917, y: 72.5215}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1934025196
@@ -3590,7 +3590,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   planeTag: DetectedPlane
-  moveSpeed: 0.1
+  moveSpeed: 0.5
   footstepsAudioSource: {fileID: 426731084}
   CookieCollectAudioSource: {fileID: 1231171542}
 --- !u!114 &2512387470422636674
