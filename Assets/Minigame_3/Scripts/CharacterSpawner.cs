@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR.ARFoundation;
+using UnityEngine.XR.ARSubsystems;
+
 
 public class CharacterSpawner : MonoBehaviour
 {
@@ -10,6 +12,7 @@ public class CharacterSpawner : MonoBehaviour
     private GameObject spawnedObject;      // The spawned object to be moved by touch
     private bool objectSpawned = false;    // To ensure we only spawn one object
     private bool showMessage = true;       // Controls whether to display the scanning message
+    private TrackableId _planeID;
 
     public static bool IsCharacterSpawned { get; private set; } // Static flag to check if the character has been spawned
 
@@ -39,9 +42,21 @@ public class CharacterSpawner : MonoBehaviour
         // Check if there are any newly detected planes
         foreach (ARPlane plane in arPlaneManager.trackables)
         {
+            //PlaneID
+            TrackableId trackableId = plane.trackableId;
+            Debug.Log("Trackable ID:" + trackableId);
+
+
             // Check if the plane area is sufficient (adjust the area threshold as needed)
-            if (plane.extents.x * plane.extents.y >= 0.2f) // 0.2 square meter threshold
+            if (plane.extents.x * plane.extents.y >= 0.5f) // 0.5 square meter threshold
             {
+                _planeID = plane.trackableId;
+                Debug.Log($"Locked plane with ID: {_planeID}");
+
+                // Stop plane detection for the rest
+                DisableOtherPlanes();
+                arPlaneManager.enabled = false;
+
                 // Spawn the object at the center of the first large enough plane
                 Vector3 spawnPosition = plane.center;
                 spawnedObject = Instantiate(objectToSpawn, spawnPosition, Quaternion.identity);
@@ -57,6 +72,20 @@ public class CharacterSpawner : MonoBehaviour
 
                 // Stop further checking once the object is spawned
                 break;
+            }
+        }
+    }
+
+    private void DisableOtherPlanes()
+    {
+        // Loop through all the currently tracked planes
+        foreach (var plane in arPlaneManager.trackables)
+        {
+            // Check if the plane is not the locked one
+            if (plane.trackableId != _planeID)
+            {
+                // Disable the plane's GameObject to hide it and stop interacting with it
+                plane.gameObject.SetActive(false);
             }
         }
     }
