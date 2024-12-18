@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System.Collections;
 
 [System.Serializable]
 public class QuestionData
@@ -18,8 +19,13 @@ public class QuizManager : MonoBehaviour
     public List<Button> optionButtons;
     public Image progressIndicator;
     public List<Sprite> progressImages; // Updated to use Sprite
+    
     public List<Sprite> ribbonSprites; // Ribbon sprites (e.g., "Question 1")
     public Image ribbonImageComponent; // This is the Image component on the Canvas for the ribbon
+
+    [Header("Feedback Images")]
+    public GameObject correctAnswerImage; // Image for correct answers
+    public GameObject wrongAnswerImage;   // Image for wrong answers
 
     [Header("Quiz Data")]
     [SerializeField]
@@ -29,6 +35,31 @@ public class QuizManager : MonoBehaviour
     public GameObject itemUnlockedScreen; // "Item Unlocked" screen
 
     private int currentQuestionIndex = 0;
+
+    private IEnumerator ShowFeedback(GameObject feedbackImage, bool isCorrect)
+{
+    feedbackImage.SetActive(true);       // Show the feedback image
+    yield return new WaitForSeconds(1);  // Wait for 1 second
+    feedbackImage.SetActive(false);      // Hide the feedback image
+
+    if (isCorrect)
+    {
+        currentQuestionIndex++;          // Go to the next question
+        if (currentQuestionIndex < questionsData.Count)
+        {
+            DisplayQuestion();
+        }
+        else
+        {
+            EndQuiz();                   // End the quiz if no more questions
+        }
+    }
+    else
+    {
+        Debug.Log("Incorrect answer. Try again."); // Stay on the current question
+    }
+}
+
 
     void Start()
     {
@@ -91,35 +122,22 @@ public class QuizManager : MonoBehaviour
     }
 
     void CheckAnswer(int selectedOption)
+{
+    if (currentQuestionIndex < questionsData.Count)
     {
-        // Ensure currentQuestionIndex is within bounds
-        if (currentQuestionIndex < questionsData.Count)
+        if (selectedOption == questionsData[currentQuestionIndex].correctAnswerIndex)
         {
-            if (selectedOption == questionsData[currentQuestionIndex].correctAnswerIndex)
-            {
-                // Correct answer logic
-                currentQuestionIndex++;
-
-                if (currentQuestionIndex < questionsData.Count)
-                {
-                    DisplayQuestion();
-                }
-                else
-                {
-                    EndQuiz(); // No more questions, end the quiz
-                }
-            }
-            else
-            {
-                // Incorrect answer logic
-                Debug.Log("Wrong Answer");
-            }
+            // Correct answer: Show correct feedback
+            StartCoroutine(ShowFeedback(correctAnswerImage, true));
         }
         else
         {
-            Debug.LogError("currentQuestionIndex is out of bounds!");
+            // Incorrect answer: Show wrong feedback
+            StartCoroutine(ShowFeedback(wrongAnswerImage, false));
         }
     }
+}
+
 
 
     void EndQuiz()
