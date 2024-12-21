@@ -21,8 +21,8 @@ MonoBehaviour:
       m_GuidLow: 4790062236757606290
       m_GuidHigh: 2762972200106194614
     m_SerializedTextureGuid:
-      m_GuidLow: 0
-      m_GuidHigh: 0
+      m_GuidLow: 15314351920619373696
+      m_GuidHigh: 12487673564394023131
     m_Size: {x: 0, y: 0}
     m_SpecifySize: 0
     m_Name: Game_1
@@ -31,8 +31,8 @@ MonoBehaviour:
       m_GuidLow: 5461901091087191789
       m_GuidHigh: 3077636603801247365
     m_SerializedTextureGuid:
-      m_GuidLow: 0
-      m_GuidHigh: 0
+      m_GuidLow: 1483341360533104695
+      m_GuidHigh: 187004706132091209
     m_Size: {x: 0, y: 0}
     m_SpecifySize: 0
     m_Name: Game_2
@@ -41,8 +41,8 @@ MonoBehaviour:
       m_GuidLow: 4879873082151920703
       m_GuidHigh: 14868322927869071263
     m_SerializedTextureGuid:
-      m_GuidLow: 0
-      m_GuidHigh: 0
+      m_GuidLow: 13036202605664505193
+      m_GuidHigh: 4162628424469679211
     m_Size: {x: 0, y: 0}
     m_SpecifySize: 0
     m_Name: Game_3
