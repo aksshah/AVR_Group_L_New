@@ -8,6 +8,7 @@ public class ScoreManager : MonoBehaviour
     public int maxScore = 10; // The maximum score (e.g., 10)
     public GameObject endScreenCanvas;
     public GameObject xrOrigin;
+    private AudioSource audioSource;
 
     private void Start()
     {
@@ -79,6 +80,28 @@ public class ScoreManager : MonoBehaviour
         {
             snowflakeSpawner.enabled = false;
             Debug.Log("Disabled SnowflakeSpawner script.");
+        }
+
+        GameObject scoreCanvas = GameObject.FindGameObjectWithTag("ScoreCanvas");
+        if (scoreCanvas != null)
+        {
+            scoreCanvas.SetActive(false);
+            Debug.Log("Disabled Score Canvas.");
+        }
+
+        GameObject game3Audio = GameObject.FindGameObjectWithTag("MG3Audio");
+        if (game3Audio != null)
+        {
+            game3Audio.SetActive(false);
+            Debug.Log("Disabled Game-3 Audio.");
+        }
+
+
+        // Disable the whole XR Origin GameObject
+        if (xrOrigin != null)
+        {
+            xrOrigin.SetActive(false);
+            Debug.Log("Disabled XR Origin GameObject.");
         }
 
         enabled = false; // Disable this script to stop further updates.
