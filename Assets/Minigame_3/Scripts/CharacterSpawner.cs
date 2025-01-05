@@ -7,14 +7,56 @@ using UnityEngine.XR.ARSubsystems;
 
 public class CharacterSpawner : MonoBehaviour
 {
+    public bool isGameStarted = false;
     private ARPlaneManager arPlaneManager; // Reference to the AR Plane Manager
     public GameObject objectToSpawn;       // The 3D object to spawn on the detected plane
     private GameObject spawnedObject;      // The spawned object to be moved by touch
     private bool objectSpawned = false;    // To ensure we only spawn one object
-    private bool showMessage = true;       // Controls whether to display the scanning message
+    private bool showMessage = false;       // Controls whether to display the scanning message
     private TrackableId _planeID;
-
     public static bool IsCharacterSpawned { get; private set; } // Static flag to check if the character has been spawned
+    private AudioSource audioSource;
+
+    public void StartGame()
+    {
+        // Find and hide the MG3Rules object
+        GameObject mg3RulesObject = GameObject.FindGameObjectWithTag("MG3Rules");
+        if (mg3RulesObject != null)
+        {
+            mg3RulesObject.SetActive(false);
+        }
+
+        // Find and enable the background Audio object
+        GameObject bgaudio = GameObject.FindGameObjectWithTag("MG3BackgroundMusic");
+        if (bgaudio != null)
+        {
+            audioSource = bgaudio.GetComponent<AudioSource>();
+            if (audioSource != null)
+            {
+                audioSource.Play();
+            }
+        }
+
+        // Enable score canvas
+        GameObject scoreCanvas = GameObject.FindGameObjectWithTag("ScoreCanvas");
+        if (scoreCanvas != null)
+        {
+            Transform panel = scoreCanvas.transform.Find("Panel"); // Look for the child named "Panel"
+            if (panel != null)
+            {
+                Debug.Log("Panel found and activated");
+                panel.gameObject.SetActive(true);
+            }
+            else
+            {
+                Debug.Log("Panel not found under ScoreCanvas");
+            }
+        }
+        else { Debug.Log("Score Canvas Not Found");  }
+
+        isGameStarted = true; 
+        showMessage = true;
+    }
 
     private void Awake()
     {
@@ -36,6 +78,9 @@ public class CharacterSpawner : MonoBehaviour
 
     private void OnPlanesChanged(ARPlanesChangedEventArgs args)
     {
+        // Wait until the game starts
+        if (!isGameStarted) return; // Skip if game hasn't started yet
+
         // Only spawn the object once, avoid redundant checks
         if (objectSpawned) return;
 
@@ -48,7 +93,7 @@ public class CharacterSpawner : MonoBehaviour
 
 
             // Check if the plane area is sufficient (adjust the area threshold as needed)
-            if (plane.extents.x * plane.extents.y >= 0.5f) // 0.5 square meter threshold
+            if (plane.extents.x * plane.extents.y >= 0.2f) // 0.2 square meter threshold
             {
                 _planeID = plane.trackableId;
                 Debug.Log($"Locked plane with ID: {_planeID}");
