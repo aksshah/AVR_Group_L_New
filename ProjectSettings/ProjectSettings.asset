@@ -163,7 +163,7 @@ PlayerSettings:
   applicationIdentifier:
     Android: com.unity.template.ar_mobile
     Standalone: com.unity.template.ar-mobile
-    iPhone: com.aksshah.avrproj
+    iPhone: com.aksshah.avrproj2
   buildNumber:
     Bratwurst: 0
     Standalone: 0
@@ -908,10 +908,10 @@ PlayerSettings:
   apiCompatibilityLevel: 6
   activeInputHandler: 2
   windowsGamepadBackendHint: 0
-  cloudProjectId: a01956d7-93b9-4042-a434-040caf05e08c
+  cloudProjectId: 11bc3fd8-5f96-422a-b292-ca4e126ca88e
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: AVR Project
+  projectName: AVR Project 2024-11-13_20-09-32
   organizationId: aks_shah
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0

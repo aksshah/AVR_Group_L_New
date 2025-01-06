@@ -6,6 +6,14 @@ TagManager:
   tags:
   - Ignite
   - ControllableObject
+  - DetectedPlane
+  - CollectableObject
+  - StartMG3
+  - MG3Rules
+  - ScoreCanvas
+  - MG3BackgroundMusic
+  - HuntCompletedScreen
+  - MG3Audio
   layers:
   - Default
   - TransparentFX
