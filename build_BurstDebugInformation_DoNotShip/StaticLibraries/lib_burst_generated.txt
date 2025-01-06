@@ -36,6 +36,12 @@ Library: /Users/apple/Downloads/AVR_Group_L_New/Temp/BurstOutput/StaticLibraries
 --assembly-defines=Unity.XR.Interaction.Toolkit.Samples.ARStarterAssets;
 --assembly-defines=Unity.XR.Interaction.Toolkit.Samples.StarterAssets;
 --assembly-defines=Unity.XR.Management;
+--assembly-defines=Unity.XR.OpenXR;
+--assembly-defines=Unity.XR.OpenXR.Features.ConformanceAutomation;
+--assembly-defines=Unity.XR.OpenXR.Features.MetaQuestSupport;
+--assembly-defines=Unity.XR.OpenXR.Features.MockRuntime;
+--assembly-defines=Unity.XR.OpenXR.Features.OculusQuestSupport;
+--assembly-defines=Unity.XR.OpenXR.Features.RuntimeDebugger;
 --assembly-defines=UnityEngine;
 --assembly-defines=zxing.unity;
 --linker-options=min-ios-version=12.0
@@ -164,6 +170,12 @@ Library: /Users/apple/Downloads/AVR_Group_L_New/Temp/BurstOutput/StaticLibraries
 --assembly-defines=Unity.XR.Interaction.Toolkit.Samples.ARStarterAssets;
 --assembly-defines=Unity.XR.Interaction.Toolkit.Samples.StarterAssets;
 --assembly-defines=Unity.XR.Management;
+--assembly-defines=Unity.XR.OpenXR;
+--assembly-defines=Unity.XR.OpenXR.Features.ConformanceAutomation;
+--assembly-defines=Unity.XR.OpenXR.Features.MetaQuestSupport;
+--assembly-defines=Unity.XR.OpenXR.Features.MockRuntime;
+--assembly-defines=Unity.XR.OpenXR.Features.OculusQuestSupport;
+--assembly-defines=Unity.XR.OpenXR.Features.RuntimeDebugger;
 --assembly-defines=UnityEngine;
 --assembly-defines=zxing.unity;
 --linker-options=min-ios-version=12.0
