@@ -93,7 +93,7 @@ public class CharacterSpawner : MonoBehaviour
 
 
             // Check if the plane area is sufficient (adjust the area threshold as needed)
-            if (plane.extents.x * plane.extents.y >= 0.2f) // 0.2 square meter threshold
+            if (plane.extents.x * plane.extents.y >= 0.5f) // 0.5 square meter threshold
             {
                 _planeID = plane.trackableId;
                 Debug.Log($"Locked plane with ID: {_planeID}");
